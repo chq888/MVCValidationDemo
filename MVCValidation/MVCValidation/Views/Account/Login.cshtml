@@ -3,11 +3,187 @@
 @{
     ViewBag.Title = "Log in";
 }
-
 <h2>@ViewBag.Title.</h2>
+<style>
+
+    .form-inline.custom-form-bootstrap .form-group,.custom-form-bootstrap4.form-inline .form-group {
+        vertical-align: top
+    }
+
+.custom-has-feedback {
+    position: relative
+}
+
+.custom-control-feedback {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    display: block;
+    text-align: center
+}
+
+    .custom-invalid-feedback {
+        display: block
+    }
+
+    .form-error {
+        display: block
+    }
+
+    .custom-form-bootstrap .invalid-feedback {
+        margin-bottom: 0
+    }
+
+.custom-form-bootstrap .tooltip-inner {
+    text-align: left
+}
+
+.custom-form-bootstrap .custom-bootstrap-icon-input-group {
+    z-index: 100
+}
+
+.custom-form-bootstrap4 .custom-control-feedback {
+    width: 38px;
+    height: 38px;
+    line-height: 38px
+}
+
+.custom-form-bootstrap4 .form-group.row .custom-control-feedback {
+    right: 15px
+}
+
+.custom-form-bootstrap4 .form-group.row .form-check~.custom-control-feedback {
+    top: -7px
+}
+
+.custom-form-bootstrap4:not(.form-inline) label~.custom-control-feedback {
+    top: 32px
+}
+
+.custom-form-bootstrap4:not(.form-inline) label.sr-only~.custom-control-feedback {
+    top: -7px
+}
+
+.custom-form-bootstrap4:not(.form-inline) .form-check~.custom-control-feedback {
+    top: 25px
+}
+
+.custom-form-bootstrap4 .has-success .custom-control-feedback,.custom-form-bootstrap4 .has-success label {
+    color: #5cb85c
+}
+
+.custom-form-bootstrap4 .has-warning .custom-control-feedback,.custom-form-bootstrap4 .has-warning label {
+    color: #f0ad4e
+}
+
+    .right-inner-addon {
+        position: relative;
+    }
+
+</style>
 <div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
+
+    <div class="col-md-12">
+        @*<form novalidate class="was-validated">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>*@
+
+        <form id="register-form" role="form" novalidate class="custom-form-bootstrap4">
+
+            @*
+        <div class="form-group row">
+            <label class="col-xs-3 col-form-label">Full name</label>
+            <div class="col-xs-4 custom-has-feedback has-warning">
+                <input type="text" class="form-control" name="firstName" placeholder="First name" data-custom-field="firstName"><i class="custom-control-feedback fa fa-times" data-custom-icon-for="firstName" style=""></i>
+                <small class="form-control-feedback" data-custom-validator="notEmpty" data-custom-for="firstName" data-custom-result="INVALID" style="">The first name is required</small>
+            </div>
+            <div class="col-xs-4 custom-has-feedback has-warning">
+                <input type="text" class="form-control" name="lastName" placeholder="Last name" data-custom-field="lastName"><i class="custom-control-feedback fa fa-times" data-custom-icon-for="lastName" style=""></i>
+                <small class="form-control-feedback" data-custom-validator="notEmpty" data-custom-for="lastName" data-custom-result="INVALID" style="">The last name is required</small>
+            </div>
+        </div>
+            *@
+            <div class="form-group row">
+                <div class="col-sm-2">Checkbox</div>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="agree1" name="agree1" value="agree">
+                        <label class="form-check-label" for="invalidCheck">
+                            Agree to terms and conditions
+                        </label>
+                        <div class="invalid-feedback">
+                            You must agree before submitting.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="firstname">firstname: </label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="firstname" name="firstname" />
+                    @*<i class="material-icons custom-control-feedback">clear</i>*@
+                </div>
+            </div>
+            @*<div class="form-group row">
+            <label class="col-sm-2 col-form-label " for="password">password：</label>
+            <div class="col-sm-8">
+                <input class="form-control" id="password" name="password" type="password" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label " for="confirm_password">confirm_password：</label>
+            <div class="col-sm-8">
+                <input class="form-control" id="confirm_password" name="confirm_password" type="password" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label " for="email">E-Mail：</label>
+            <div class="col-sm-8">
+                <input class="form-control" id="email" name="email" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label " for="phone">phone：</label>
+            <div class="col-sm-8">
+                <input class="form-control" id="phone" name="phone" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label " for="tel">tel：</label>
+            <div class="col-sm-8">
+                <input class="form-control" id="tel" name="tel" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label " for="address">address：</label>
+            <div class="col-sm-8">
+                <input class="form-control" id="address" name="address" />
+            </div>
+        </div>*@
+            <div class="form-group row">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-primary ">submit</button>
+                    <button type="reset" class="btn btn-primary ">reset</button>
+                </div>
+            </div>
+        </form>
+
+        @*<section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
@@ -15,14 +191,14 @@
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 " })
                     <div class="col-md-10">
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 " })
                     <div class="col-md-10">
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
@@ -44,20 +220,159 @@
                 <p>
                     @Html.ActionLink("Register as a new user", "Register")
                 </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
-            }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
-</div>
 
+            }
+            </section>*@
+    </div>
+  
+</div>
 @section Scripts {
+
     @Scripts.Render("~/bundles/jqueryval")
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <script>
+        $(document).ready(function () {
+
+            jQuery.validator.addMethod("isPhone", function (value, element) {
+                var length = value.length;
+                return this.optional(element) || (length == 11 && /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(value));
+            }, "Please fill in your mobile number correctly");
+
+            jQuery.validator.addMethod("isTel", function (value, element) {
+                var tel = /^(\d{3,4}-)?\d{7,8}$/g; //Area code -3, 4 digit number -7,8
+                return this.optional(element) || (tel.test(value));
+            }, "Please fill in your mobile number correctly");
+
+            jQuery.validator.addMethod("isPwd", function (value, element) {
+                var str = value;
+                if (str.length < 6 || str.length > 18)
+                    return false;
+                if (!/^[a-zA-Z]/.test(str))
+                    return false;
+                if (!/[0-9]/.test(str))
+                    return fasle;
+                return this.optional(element) || /[^A-Za-z0-9]/.test(str);
+            }, "The matching password, beginning with a letter, is between 6 and 12 digits in length and must include numbers and special characters.");
+
+            $("#register-form").validate({
+                
+                rules: {
+                    agree1: "required",
+
+                    firstname: "required",
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        required: true,
+                        isPwd: true
+                    },
+                    confirm_password: {
+                        required: true,
+                        isPwd: true,
+                        equalTo: "#password"
+                    },
+                    phone: {
+                        required: true,
+                        isPhone: true
+                    },
+                    tel: {
+                        isTel: true
+                    },
+                    address: {
+                        minlength: 10
+                    }
+                },
+                messages: {
+                    firstname: "Please type in your name",
+                    email: {
+                        required: "Please enter email address",
+                        email: "email invalid"
+                    },
+                    password: {
+                        required: "Please type",
+                        minlength: jQuery.validator.format("Password can not be less than {0} characters")
+                    },
+                    confirm_password: {
+                        required: "Please enter the confirmation password",
+                        minlength: "Confirm password can not be less than 5 characters",
+                        equalTo: "Inconsistencies between the two input password inconsistencies"
+                    },
+                    phone: {
+                        required: "Please enter the phone number"
+                    },
+                    tel: {
+                        required: "Please enter the landline number"
+                    },
+                    address: {
+                        required: "Please enter your home address",
+                        minlength: jQuery.validator.format("Family address can not be less than {0} characters")
+                    }
+                },
+                //Where to put custom error messages
+                errorElement: 'div',
+                //errorClass: 'invalid-feedback',
+                errorPlacement: function (error, element) {
+
+                    //element.next().remove(); //Delete display icon
+                    //element.after('<i class="material-icons custom-control-feedback">clear</i>');
+
+                    element.closest('.form-group').addClass("custom-has-feedback");
+                    error.addClass("invalid-feedback");
+                    error.insertAfter(element);
+
+                    if (!$(element).next("i")[0]) {
+                        $(element).after('<i class="material-icons custom-control-feedback text-danger">clear</i>');
+                    }
+
+                    //element.after(error);//An error message is displayed
+
+                    //element.closest('.form-group').append(error);//An error message is displayed
+                },
+                //Unverified elements are processed
+                highlight: function (element) {
+
+                    //var id_attr = "#" + $(element).attr("id") + "1";
+                    //$(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                    //$(id_attr).removeClass('glyphicon-ok').addClass('glyphicon-remove');   
+
+                    //$(element).closest('.form-group').removeClass('is-valid').addClass('is-invalid');
+
+                    $(element).removeClass('is-valid').addClass('is-invalid');
+                    $(element).next("i").removeClass('text-success').addClass('text-danger').html("clear");
+                },
+                unhighlight: function (element) {
+                    //var id_attr = "#" + $(element).attr("id") + "1";
+                    //$(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+                    //$(id_attr).removeClass('glyphicon-remove').addClass('glyphicon-ok');
+
+                    $(element).removeClass('is-invalid').addClass('is-valid');
+                    $(element).next("i").removeClass('text-danger').addClass('text-success').html("done");
+                },
+
+                //Verify the process passed
+                success: function (label, element) {
+                    //var el = $(label.find("input")); //label.closest('.form-group').find("input");
+                    //var el = $(element);
+                    //$(element).closest('.form-group').remove(".material-icons");
+
+                    //$(element).next().remove();//Similar to errorPlacement
+                    if (!$(element).next("i")[0]) {
+                        $(element).after('<i class="material-icons custom-control-feedback text-success">done</i>');
+                    }
+                    
+                    //$(element).removeClass('is-invalid').addClass("is-valid");
+                    //label.closest('.form-group').removeClass('is-invalid').addClass("is-valid");
+                    //label.remove();
+                },
+
+            });
+        });
+
+    </script>
+
 }
